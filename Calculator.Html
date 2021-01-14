@@ -1,0 +1,140 @@
+<html lang="en">
+<head>
+    <title></title>
+</head>
+<style type="text/css" media="screen">
+
+    body {
+        background: #1f2326;
+    }
+
+    .container {
+        width: 290px;
+        background: #1f2326;
+        border-radius: 5px;
+        box-shadow: 0 15px 50px 0 rgba(0,0,0,0), 0 15px 15px 0 rgba(0,0,0,0.2);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .heading {
+        text-align: left;
+        font-size: 22px;
+        color: #000000;
+        padding: 10px 0 0 10px;
+    }
+
+    .resultscreen {
+        height: 60px;
+        width: 100%;
+        position: relative;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        background: #CCF3D4;
+    }
+
+    input[type='text'] {
+        width: 200px;
+        padding-right: 50px;
+        position: absolute;
+        bottom: 0;
+        border: none;
+        text-align: right;
+        font-size: 30px;
+        color: #000000;
+        background: none;
+    }
+
+    .line {
+        width: 300px;
+    }
+
+    input[type='button'] {
+        float: left;
+        font-size: 15px;
+        line-height: 30px;
+        margin: 1;
+        width: 73px;
+        height: 50px;
+        border: none;
+        color: #fafafa;
+        cursor: pointer;
+        outline: none;
+        background: #2d2d2d;
+    }
+
+        input[type='button'][value='0'] {
+            border-bottom-left-radius: 5px;
+        }
+
+        input[type='button'][value='='] {
+            background: #1D8D33;
+            color: #ffffff;
+            border-bottom-right-radius: 5px;
+        }
+</style>
+<body>
+    <div class="container">
+        <form name="calculatorForm">
+            <div class="resultscreen">
+                <div class="heading"></div>
+                <input type="text" name="Total" />
+            </div>
+            <div class="buttons">
+                <div class="line">
+                    <input type="button" name="btnNum7" value="7" onClick="CalculateVal(btnNum7.value)" />
+                    <input type="button" name="btnNum8" value="8" onClick="CalculateVal(btnNum8.value)" />
+                    <input type="button" name="btnNum9" value="9" onClick="CalculateVal(btnNum9.value)" />
+                    <input type="button" name="btnDivide" value="/" onClick="CalculateVal(btnDivide.value)" />
+                </div>
+
+                <div class="line">
+                    <input type="button" name="btnNum4" value="4" onClick="CalculateVal(btnNum4.value)" />
+                    <input type="button" name="btnNum5" value="5" onClick="CalculateVal(btnNum5.value)" />
+                    <input type="button" name="btnNum6" value="6" onClick="CalculateVal(btnNum6.value)" />
+                    <input type="button" name="btnMultiply" value="*" onClick="CalculateVal(btnMultiply.value)" />
+                </div>
+
+                <div class="line">
+                    <input type="button" name="btnNum1" value="1" onClick="CalculateVal(btnNum1.value)" />
+                    <input type="button" name="btnNum2" value="2" onClick="CalculateVal(btnNum2.value)" />
+                    <input type="button" name="btnNum3" value="3" onClick="CalculateVal(btnNum3.value)" />
+                    <input type="button" name="btnSubtract" value="-" onClick="CalculateVal(btnSubtract.value)" />
+                </div>
+
+                <div class="line">
+                    <input type="button" name="btnNum0" value="0" onClick="CalculateVal(btnNum0.value)" />
+                    <input type="button" name="btnClr" value="clear" onClick="Clear()" />
+                    <input type="button" name="btnAdd" value="+" onClick="CalculateVal(btnAdd.value)" />
+                    <input type="button" name="result" value="=" onClick="GetTotal(Total.value)" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+
+    function GetTotal(result)
+    {
+    var total = eval(result);
+    if ((total == Infinity )|| (isNaN(total)== 'true')) {
+    calculatorForm.Total.value = "Naughty!";
+    return;
+    }
+    calculatorForm.Total.value = total;
+    }
+    function CalculateVal(result){
+	    calculatorForm.Total.value = calculatorForm.Total.value + result;
+
+     }
+     function Clear(){
+     calculatorForm.Total.value = "";
+			}
+    </script>
+
+
+</body>
+</html>
